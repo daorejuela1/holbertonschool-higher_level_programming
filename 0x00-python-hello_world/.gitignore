@@ -1,0 +1,8 @@
+*
+!*.c
+!*.h
+!*.py
+!*.md
+!0-run
+!1-run_inline
+!.gitignore
