@@ -5,7 +5,5 @@ def uppercase(str):
             upper_character = str[i]
         else:
             upper_character = chr(ord(str[i]) - 32)
-        if (i != len(str) - 1):
-            print("{}".format(upper_character), end="")
-        else:
-            print("{}".format(upper_character))
+        print("{}".format(upper_character), end="")
+    print()
