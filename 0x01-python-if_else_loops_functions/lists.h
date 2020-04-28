@@ -15,6 +15,23 @@ typedef struct listint_s
     struct listint_s *next;
 } listint_t;
 
+/**
+ * struct list_need - singly linked list
+ * @head: integer
+ * @ini_node: points to the next node
+ * @next_value: next_value
+ * @number: number to add to the new node
+ * Description: singly linked list node structure
+ * for Holberton project
+ */
+typedef struct list_need
+{
+    listint_t **head;
+    listint_t *ini_node;
+    listint_t next_value;
+    int number;
+} args_f;
+
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
