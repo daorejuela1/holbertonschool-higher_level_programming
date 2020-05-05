@@ -41,6 +41,5 @@ int is_palindrome(listint_t **head)
 	}
 	free(tmp_array);
 	*head = origin;
-	printf("Valor de: %d\n", len);
 	return (1);
 }
