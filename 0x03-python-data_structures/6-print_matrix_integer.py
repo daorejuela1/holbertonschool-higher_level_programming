@@ -10,6 +10,6 @@ def print_matrix_integer(matrix=[[]]):
                 if (row == len_list - 1):
                     print()
                 else:
-                    print("", end=", ")
+                    print("", end=" ")
     else:
         print()
