@@ -4,10 +4,10 @@ def no_c(my_string):
     current_list = list(my_string)
     max = len(current_list)
 
-    for character in range(0, max):
+    for i in range(0, max):
         try:
-            if current_list[character] == 'c' or current_list[character] == 'C':
-                del current_list[character]
+            if current_list[i] == 'c' or current_list[i] == 'C':
+                del current_list[i]
         except IndexError:
             pass
     output_string = ''.join(current_list)
