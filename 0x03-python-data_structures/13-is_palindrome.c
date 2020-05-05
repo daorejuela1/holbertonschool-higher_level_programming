@@ -8,7 +8,7 @@
 int is_palindrome(listint_t **head)
 {
 	void *origin;
-	int len = 0, tmp_array[1000], i = 0;
+	int len = 0, tmp_array[1000000], i = 0;
 
 	if (*head == NULL)
 		return (1);
