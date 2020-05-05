@@ -8,7 +8,7 @@
 int is_palindrome(listint_t **head)
 {
 	void *origin;
-	int len = 0, *tmp_array, i = 0;
+	int len = 0, tmp_array[1000], i = 0;
 
 	if (*head == NULL)
 		return (1);
@@ -20,7 +20,7 @@ int is_palindrome(listint_t **head)
 	}
 	len--;
 	*head = origin;
-	tmp_array = malloc(((len + 1) / 2) * sizeof(int));
+	/*tmp_array = malloc(((len + 1) / 2) * sizeof(int));*/
 	for (i = 0; i <= len; i++)
 	{
 		if (i <= (len / 2))
