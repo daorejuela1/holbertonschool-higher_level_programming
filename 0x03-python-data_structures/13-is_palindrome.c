@@ -32,14 +32,14 @@ int is_palindrome(listint_t **head)
 		{
 			if (tmp_array[len - i] != (*head)->n)
 			{
-				free(tmp_array);
+				/*free(tmp_array);*/
 				*head = origin;
 				return (0);
 			}
 			*head = (*head)->next;
 		}
 	}
-	free(tmp_array);
+	/*free(tmp_array);*/
 	*head = origin;
 	return (1);
 }
