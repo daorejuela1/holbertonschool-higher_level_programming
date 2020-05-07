@@ -17,7 +17,11 @@ void print_python_list(PyObject *p)
 	printf("[*] Size of the Python List = %d\n", tamano);
 	printf("[*] Allocated = %d\n", (int)(((PyListObject *)(p))->allocated));
 	for (i = 0; i < tamano; i++)
+	{
 		printf("Element %d: %s\n", i, DATATYPE);
+		if (PyBytes_Check((((PyListObject *)(p))->ob_item[i])))
+			print_python_bytes((((PyListObject *)(p))->ob_item[i]));
+	}
 }
 /**
  *print_python_bytes - function to print about list
@@ -31,7 +35,7 @@ void print_python_bytes(PyObject *p)
 	Py_ssize_t length = NULL;
 
 	printf("[.] bytes object info\n");
-	if (PyBytes_CheckExact(p))
+	if (PyBytes_Check(p))
 	{
 		PyBytes_AsStringAndSize(p, &buffer, &length);
 		tamano = (int)length;
