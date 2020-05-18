@@ -124,10 +124,9 @@ void print_python_float(PyObject *p)
 	fflush(stdout);
 	if (PyFloat_Check(p))
 	{
-		sprintf(float_number, "%0.15f", ((PyFloatObject *)(p))->ob_fval);
-		trim_zeros(float_number);
+
 		printf("  value: %s\n", float_number);
-		fflush(stdout);
+
 	}
 	else
 	{
