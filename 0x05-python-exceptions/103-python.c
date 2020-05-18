@@ -2,6 +2,7 @@
 #include <stdio.h>
 #define PY_REP(x) (((PyObject *)(x))->ob_type)
 #define DATATYPE PY_REP(((PyListObject *)(p))->ob_item[i])->tp_name
+#define MAX_SIZE 15
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
 /**
@@ -82,35 +83,7 @@ void print_python_bytes(PyObject *p)
 		printf("  [ERROR] Invalid Bytes Object\n");
 		fflush(stdout);
 }
-/**
- *trim_zeros - this will cut a string with the zero delimiter
- *@x: string to cut for float logic
- *Return: Nothing
- */
-void trim_zeros(char *x)
-{
-	int i, length, flag_passed = 0;
 
-	length = strlen(x) - 1;
-	for (i = 0; i < length; i++)
-	{
-		if (x[i] == '.' && x[i + 1] == '0')
-		{
-			i = i + 2;
-			x[i] = 0;
-			break;
-		}
-		else if (x[i] == '.')
-			flag_passed = 1;
-		if (flag_passed == 1 && x[i] == '0')
-		{
-			x[i] = 0;
-			break;
-		}
-	}
-	for (; i < length; i++)
-		x[i + 1] = 0;
-}
 /**
  *print_python_float - function to print about float objects
  *@p: pointer to refer to a list of python
@@ -118,15 +91,13 @@ void trim_zeros(char *x)
  */
 void print_python_float(PyObject *p)
 {
-	char float_number[20];
+	char float_number[MAX_SIZE];
 
 	printf("[.] float object info\n");
 	fflush(stdout);
 	if (PyFloat_Check(p))
 	{
-
 		printf("  value: %s\n", float_number);
-
 	}
 	else
 	{
