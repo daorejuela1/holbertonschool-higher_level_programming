@@ -51,16 +51,14 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	int tamano = 0, printed = 0, i = 0;
-	char *buffer = NULL;
-	Py_ssize_t length = NULL;
+	char *buffer;
 
 	printf("[.] bytes object info\n");
 	fflush(stdout);
 	if (PyBytes_Check(p))
 	{
-		buffer = "hola";
-		length = 4;
-		tamano = (int)length;
+		buffer = ((PyBytesObject *)(p))->ob_sval;
+		tamano = (int)PyBytes_Size(p);
 		if (tamano >= 10)
 			printed = 10;
 		else
