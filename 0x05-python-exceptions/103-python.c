@@ -50,38 +50,13 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	int tamano = 0, printed = 0, i = 0;
-	char *buffer = NULL;
-	Py_ssize_t length = NULL;
 
-	printf("[.] bytes object info\n");
-	fflush(stdout);
+
 	if (PyBytes_Check(p))
 	{
-		PyBytes_AsStringAndSize(p, &buffer, &length);
-		tamano = (int)length;
-		if (tamano >= 10)
-			printed = 10;
-		else
-			printed = tamano + 1;
-		printf("  size: %d\n", tamano);
-		fflush(stdout);
-		printf("  trying string: %s\n", buffer);
-		fflush(stdout);
-		printf("  first %d bytes: ", printed);
-		fflush(stdout);
-		for (i = 0; i < printed; i++)
-		{
-			printf("%02x", (unsigned char)*(buffer + i));
-			fflush(stdout);
-			if (i < printed - 1)
-			{
-				printf(" ");
-				fflush(stdout);
-			}
-		}
+
 			printf("\n");
-			fflush(stdout);
+
 	}
 	else
 	{
