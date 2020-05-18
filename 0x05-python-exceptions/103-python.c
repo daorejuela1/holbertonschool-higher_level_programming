@@ -5,6 +5,9 @@
 #define MAX_SIZE 15
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
+void trim_zeros(char *x);
+void print_python_float(PyObject *p);
+
 /**
  *print_python_list - function to print about list
  *@p: pointer to refer to a list of python
@@ -16,7 +19,7 @@ void print_python_list(PyObject *p)
 
 	printf("[*] Python list info\n");
 	fflush(stdout);
-	if (1)
+	if (PyList_Check(p))
 	{
 		tamano = (int)(((PyVarObject *)(p))->ob_size);
 
@@ -32,7 +35,6 @@ void print_python_list(PyObject *p)
 				print_python_bytes((((PyListObject *)(p))->ob_item[i]));
 			else if (PyFloat_Check((((PyListObject *)(p))->ob_item[i])))
 				print_python_float((((PyListObject *)(p))->ob_item[i]));
-
 		}
 	}
 	else
@@ -54,7 +56,7 @@ void print_python_bytes(PyObject *p)
 
 	printf("[.] bytes object info\n");
 	fflush(stdout);
-	if (1)
+	if (PyBytes_Check(p))
 	{
 		PyBytes_AsStringAndSize(p, &buffer, &length);
 		tamano = (int)length;
@@ -73,15 +75,19 @@ void print_python_bytes(PyObject *p)
 			printf("%02x", (unsigned char)*(buffer + i));
 			fflush(stdout);
 			if (i < printed - 1)
+			{
 				printf(" ");
 				fflush(stdout);
+			}
 		}
 			printf("\n");
 			fflush(stdout);
 	}
 	else
+	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		fflush(stdout);
+	}
 }
 /**
  *trim_zeros - this will cut a string with the zero delimiter
@@ -123,7 +129,7 @@ void print_python_float(PyObject *p)
 
 	printf("[.] float object info\n");
 	fflush(stdout);
-	if (1)
+	if (PyFloat_Check(p))
 	{
 		sprintf(float_number, "%0.15f", ((PyFloatObject *)(p))->ob_fval);
 		trim_zeros(float_number);
