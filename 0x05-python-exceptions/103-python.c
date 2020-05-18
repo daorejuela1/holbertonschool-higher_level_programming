@@ -50,12 +50,10 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-
-
 	if (PyBytes_Check(p))
 	{
 
-			printf("\n");
+		printf("\n");
 
 	}
 	else
