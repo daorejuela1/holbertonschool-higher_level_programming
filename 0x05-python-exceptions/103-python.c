@@ -130,15 +130,16 @@ void trim_zeros(char *x)
  */
 void print_python_float(PyObject *p)
 {
-	char float_number[MAX_SIZE];
+	char *string;
+	double float_value;
 
 	printf("[.] float object info\n");
 	fflush(stdout);
 	if (PyFloat_Check(p))
 	{
-		sprintf(float_number, "%0.15f", ((PyFloatObject *)(p))->ob_fval);
-		trim_zeros(float_number);
-		printf("  value: %s\n", float_number);
+		float_value = ((PyFloatObject *)(p))->ob_fval;
+		string = PyOS_double_to_string(float_value, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
+		printf("  value: %s\n", string);
 		fflush(stdout);
 	}
 	else
