@@ -5,6 +5,7 @@
 #define MAX_SIZE 15
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
+void trim_zeros(char *x);
 void print_python_float(PyObject *p);
 
 /**
@@ -50,7 +51,7 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	int tamano = 0, printed = 0, i = 0;
-	char *buffer;
+	char *buffer, copy_arr[100];
 
 	printf("[.] bytes object info\n");
 	fflush(stdout);
@@ -62,9 +63,15 @@ void print_python_bytes(PyObject *p)
 			printed = 10;
 		else
 			printed = tamano + 1;
+		strcpy(copy_arr, buffer);
+		for (i = 0; i < tamano; i++)
+		{
+			if (copy_arr[i] < 0)
+				copy_arr[i] = '?';
+		}
 		printf("  size: %d\n", tamano);
 		fflush(stdout);
-		printf("  trying string: %s\n", buffer);
+		printf("  trying string: %s\n", copy_arr);
 		fflush(stdout);
 		printf("  first %d bytes: ", printed);
 		fflush(stdout);
@@ -87,7 +94,35 @@ void print_python_bytes(PyObject *p)
 		fflush(stdout);
 	}
 }
+/**
+ *trim_zeros - this will cut a string with the zero delimiter
+ *@x: string to cut for float logic
+ *Return: Nothing
+ */
+void trim_zeros(char *x)
+{
+	int i, length, flag_passed = 0;
 
+	length = strlen(x) - 1;
+	for (i = 0; i < length; i++)
+	{
+		if (x[i] == '.' && x[i + 1] == '0')
+		{
+			i = i + 2;
+			x[i] = 0;
+			break;
+		}
+		else if (x[i] == '.')
+			flag_passed = 1;
+		if (flag_passed == 1 && x[i] == '0')
+		{
+			x[i] = 0;
+			break;
+		}
+	}
+	for (; i < length; i++)
+		x[i + 1] = 0;
+}
 /**
  *print_python_float - function to print about float objects
  *@p: pointer to refer to a list of python
@@ -95,16 +130,15 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-	float value;
-	char *string;
+	char float_number[MAX_SIZE];
 
 	printf("[.] float object info\n");
 	fflush(stdout);
 	if (PyFloat_Check(p))
 	{
-		value = ((PyFloatObject *)(p))->ob_fval;
-		string = PyOS_double_to_string(value, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
-		printf("  value: %s\n", string);
+		sprintf(float_number, "%0.15f", ((PyFloatObject *)(p))->ob_fval);
+		trim_zeros(float_number);
+		printf("  value: %s\n", float_number);
 		fflush(stdout);
 	}
 	else
