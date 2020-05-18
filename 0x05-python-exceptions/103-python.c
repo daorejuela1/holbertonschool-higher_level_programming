@@ -95,12 +95,21 @@ void trim_zeros(char *x)
 	for (i = 0; i < length; i++)
 	{
 		if (x[i] == '.' && x[i + 1] == '0')
-			x[i + 2] = 0;
+		{
+			i = i + 2;
+			x[i] = 0;
+			break;
+		}
 		else if (x[i] == '.')
 			flag_passed = 1;
 		if (flag_passed == 1 && x[i] == '0')
+		{
 			x[i] = 0;
+			break;
+		}
 	}
+	for (; i < length; i++)
+		x[i + 1] = 0;
 }
 /**
  *print_python_float - function to print about float objects
@@ -109,7 +118,7 @@ void trim_zeros(char *x)
  */
 void print_python_float(PyObject *p)
 {
-	char float_number[15];
+	char float_number[20];
 
 	printf("[.] float object info\n");
 	fflush(stdout);
