@@ -9,7 +9,7 @@ class MagicClass():
     def __init__(self, radius=0):
         """get radius type"""
         self.__radius = 0
-        if type(radius) is not int and type(radius) is not float:
+        if not isinstance(radius, int) and not isinstance(radius, float):
             raise TypeError("radius must be a number")
         self.__radius = radius
 
@@ -22,3 +22,6 @@ class MagicClass():
     def circumference(self):
         """circumference = 2 * r * pi"""
         return(2 * math.pi * self.__radius)
+
+import dis
+dis.dis(MagicClass)
