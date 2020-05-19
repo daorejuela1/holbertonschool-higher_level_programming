@@ -13,12 +13,10 @@ class MagicClass():
             raise TypeError("radius must be a number")
         self.__radius = radius
 
-    @property
     def area(self):
         """area = r^2 * pi"""
         return((self.__radius ** 2) * math.pi)
 
-    @property
     def circumference(self):
         """circumference = 2 * r * pi"""
         return(2 * math.pi * self.__radius)
