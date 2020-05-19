@@ -1,6 +1,6 @@
 #!/usr/bin/python3
+"""This module replicates a class by it's bytecode."""
 import math
-
 
 class MagicClass():
     """class to represent a circle"""
