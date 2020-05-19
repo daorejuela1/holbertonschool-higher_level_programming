@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import math
 """This module replicates a class by it's docstring."""
 
 
@@ -14,7 +14,7 @@ class MagicClass():
 
     def area(self):
         """area = r^2 * pi"""
-        return(self._MagicClass__radius ** 2 * math.pi)
+        return((self._MagicClass__radius ** 2) * math.pi)
 
     def circumference(self):
         """circumference = 2 * r * pi"""
