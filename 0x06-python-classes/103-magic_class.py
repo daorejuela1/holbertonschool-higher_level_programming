@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import math
-"""This module replicates a class by it's bytecode."""
 
 
 class MagicClass():
