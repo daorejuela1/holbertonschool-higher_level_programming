@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" 103-magic_class.pyThis module replicates a class by it's docstring.
-"""
+
+"""This module replicates a class by it's docstring."""
 
 
 class MagicClass():
