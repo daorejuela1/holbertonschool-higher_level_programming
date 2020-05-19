@@ -2,8 +2,10 @@
 """This module replicates a class by it's bytecode."""
 import math
 
+
 class MagicClass():
     """class to represent a circle"""
+
     def __init__(self, radius=0):
         """get radius type"""
         self.__radius = 0
