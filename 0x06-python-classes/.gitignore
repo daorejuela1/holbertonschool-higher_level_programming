@@ -1,6 +1,6 @@
 *
-!.c
-!.py
-!.md
+!*.c
+!*.py
+!*.md
 !*h
 !.gitignore
