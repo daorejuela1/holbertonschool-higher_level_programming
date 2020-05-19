@@ -22,6 +22,3 @@ class MagicClass():
     def circumference(self):
         """circumference = 2 * r * pi"""
         return(2 * math.pi * self.__radius)
-
-import dis
-dis.dis(MagicClass)
