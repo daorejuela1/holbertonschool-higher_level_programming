@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""linked list docstrings.
+
+This module demonstrates how to use a linked list with classes.
+"""
+
+
 class Node():
     """This class defines a memory space"""
     def __init__(self, data, next_node=None):

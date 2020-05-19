@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
+"""linked list docstrings.
+
+This module demonstrates how to use print with square.
+"""
+
+
 class Square():
     """This class defines a Square """
     def __init__(self, size=0, position=(0, 0)):

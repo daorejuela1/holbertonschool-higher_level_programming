@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""5-square docstrings.
+
+This module demonstrates how to use print with classes.
+"""
+
+
 class Square():
     """This class defines a Square """
     def __init__(self, size=0):
