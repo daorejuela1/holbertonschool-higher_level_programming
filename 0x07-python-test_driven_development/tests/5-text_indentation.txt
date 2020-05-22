@@ -44,3 +44,11 @@ Text without special chars:
     <BLANKLINE>
     how are you today:
     <BLANKLINE>
+
+    >>> text_indentation("   ?   :   .   ")
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    .
+    <BLANKLINE>

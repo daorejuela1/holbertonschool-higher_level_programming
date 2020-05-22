@@ -1,14 +1,18 @@
 #!/usr/bin/python3
 """Unittest for max_integer([..])
 """
+
+
 import unittest
 max_integer = __import__('6-max_integer').max_integer
+
 
 class TestMaxInteger(unittest.TestCase):
     """
     Test the function max_integer to get the max value
     of a list of integers
     """
+
     def test_empty_list(self):
         """ Pass an empty list"""
         self.assertEqual(max_integer([]), None)
@@ -37,6 +41,6 @@ class TestMaxInteger(unittest.TestCase):
     def test_negative_ints(self):
         """ Pass ints"""
         my_test_list = [-2, -3, 4, -40]
-        self.assertEqual(max_integer(my_test_list), max(my_test_list))
+        self.assertEqual(max_integer(my_test_list), 4)
         my_test_list = [5, -2, -5, 8]
-        self.assertEqual(max_integer(my_test_list), max(my_test_list))
+        self.assertEqual(max_integer(my_test_list), 8)

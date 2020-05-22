@@ -1,0 +1,30 @@
+The ``100-matrix_mul`` module
+======================
+
+Using ``matrix_mul``
+-------------------
+
+This is the test file for the 100-matrix_mul function
+``matrix_mul`` from the ``100-matrix_mul`` module:
+
+    >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+Test with empty matrix:
+
+    >>> matrix_mul([[]], [[]])
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+    [[7, 10], [15, 22]]
+
+    >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+    [[13, 16]]
+
+m_a is not a list
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer

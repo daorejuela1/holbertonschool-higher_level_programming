@@ -1,0 +1,90 @@
+The ``100-matrix_mul`` module
+======================
+
+Using ``matrix_mul``
+-------------------
+
+This is the test file for the 100-matrix_mul function
+``matrix_mul`` from the ``100-matrix_mul`` module:
+
+    >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+Test with empty matrix:
+
+    >>> matrix_mul([[]], [[]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a and m_b can't be multiplied
+
+    >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+    [[7, 10], [15, 22]]
+
+    >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+    [[13, 16]]
+
+    >>> matrix_mul([[1, 4, 6]], [[2, 5, 7], [3, 8, 9]])
+    Traceback (most recent call last):
+    ...
+    ValueError: m_a and m_b can't be multiplied
+
+    >>> matrix_mul([[1, 4, 6]], [[2, 3], [5, 8], [7, 9]])
+    [[64, 89]]
+
+    >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+    [[13, 16]]
+
+m_a is not a list
+
+    >>> matrix_mul('a', [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list
+
+    >>> matrix_mul(1, [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list
+
+m_b is not a list
+
+
+    >>> matrix_mul([[1, 2], [3, 4]], 5)
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list
+
+    >>> matrix_mul([[1, 2], [3, 4]], "hola")
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list
+
+m_a is not a list of list.
+
+    >>> matrix_mul([2], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list of lists
+
+    >>> matrix_mul(["happy"], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a must be a list of lists
+
+m_b is not a list of list.
+
+    >>> matrix_mul([[1, 2], [3, 4]], [2])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list of lists
+
+    >>> matrix_mul([[1, 2], [3, 4]], [(2, 3)])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_b must be a list of lists
+
+empty m_a
+
+    >>> matrix_mul([], [[1, 2], [3, 4]])
+    Traceback (most recent call last):
+    ...
+    TypeError: m_a can't be empty
