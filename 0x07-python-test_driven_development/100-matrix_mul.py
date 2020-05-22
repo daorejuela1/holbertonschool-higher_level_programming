@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This file multiplies two matrix
 Written by: daorejuela1
@@ -24,14 +25,16 @@ def matrix_mul(m_a, m_b):
         raise TypeError("m_a must be a list")
     if type(m_b) is not list:
         raise TypeError("m_b must be a list")
-    if type(m_a[0]) is not list:
-        raise TypeError("m_a must be a list of lists")
-    if type(m_b[0]) is not list:
-        raise TypeError("m_b must be a list of lists")
-    if (m_a is None or m_a[0] is None):
+    try:
+        if type(m_a[0]) is not list:
+            raise TypeError("m_a must be a list of lists")
+    except IndexError:
         raise ValueError("m_a can't be empty")
-    if (m_b is None or m_b[0] is None):
-        raise ValueError("m_b can't be empty")
+    try:
+        if type(m_b[0]) is not list:
+            raise TypeError("m_b must be a list of lists")
+    except IndexError:
+        raise ValueError("m_a can't be empty")
     # check that all data in matrix m_a are numbers (int/float)
     for i in range(0, len(m_a)):
         for j in range(0, len(m_a[0])):

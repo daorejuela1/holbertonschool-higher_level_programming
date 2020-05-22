@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Well this file is in charge of printing a simple square
 
