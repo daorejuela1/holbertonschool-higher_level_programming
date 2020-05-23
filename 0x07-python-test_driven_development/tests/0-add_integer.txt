@@ -109,3 +109,13 @@ Negative numbers:
 
     >>> add_integer(-0.5, -0.5)
     0
+
+    >>> add_integer(float('inf'), 5)
+    Traceback (most recent call last):
+        ...
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(float('NaN'), 5)
+    Traceback (most recent call last):
+        ...
+    ValueError: cannot convert float NaN to integer
