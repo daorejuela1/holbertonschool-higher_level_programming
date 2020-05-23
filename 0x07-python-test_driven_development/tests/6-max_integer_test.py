@@ -21,6 +21,7 @@ class TestMaxInteger(unittest.TestCase):
         """ Pass != to list object"""
         self.assertEqual(max_integer('a'), 'a')
         self.assertEqual(max_integer("This is not a list"), 't')
+        self.assertRaises(TypeError, max_integer, 25)
 
     def test_with_floats(self):
         """ Pass floats"""
@@ -44,6 +45,13 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer(my_test_list), 4)
         my_test_list = [5, -2, -5, 8]
         self.assertEqual(max_integer(my_test_list), 8)
+
+    def same_number(self):
+        """ Pass same ints"""
+        my_test_list = [20, 20, 20, 20]
+        self.assertEqual(max_integer(my_test_list), 20)
+        my_test_list = [-5, -5, -5, -5]
+        self.assertEqual(max_integer(my_test_list), -5)
 
     def test_huge_int(self):
         """ Pass huge ints"""
