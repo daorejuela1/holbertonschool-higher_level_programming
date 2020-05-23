@@ -14,7 +14,7 @@ Test with empty matrix:
     >>> lazy_matrix_mul([[]], [[]])
     Traceback (most recent call last):
     ...
-    ValueError: shapes (1,0) and (1,0) not aligned: 0
+    ValueError: shapes (1,0) and (1,0) not aligned: 0 (dim 1) != 1 (dim 0)
 
     >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
     array([[ 7, 10],
