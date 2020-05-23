@@ -24,5 +24,5 @@ def lazy_matrix_mul(m_a, m_b):
         doesnt have int/float or
         cant multiply.
     """
-    result = np.matmul(ma_a, ma_b)
+    result = np.matmul(m_a, m_b)
     return result
