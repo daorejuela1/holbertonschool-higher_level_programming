@@ -53,8 +53,8 @@ What you should learn from this project:
 
 
 ### [8. CPython #3: Python Strings](./102-python.c)
-* 
-
+* Is beautiful to see how you can interact with python objects by using C
+I wonder if this has some utility
 
 ---
 
