@@ -2,12 +2,27 @@
 """
 
 matrix_divide a new matrix divided by div
+written by: daorejuela1
+MIT License
 
 """
 
 
 def matrix_divided(matrix, div):
-    """this functions divides a matrix by the num div"""
+    """
+    This divides a matrix by a number div.
+
+    Args:
+        matrix: first number.
+        div: second number.
+
+    Returns:
+        return each element divided by div.
+
+    Raises:
+        TypeError: not a matrix,
+        or not numbers, or uneven rows.
+    """
     err_message = "matrix must be a matrix (list of lists) of integers/floats"
     if matrix is None:
         raise TypeError(err_message)
