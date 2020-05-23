@@ -60,5 +60,12 @@ class TestMaxInteger(unittest.TestCase):
         my_test_list = [10000000000, -2, -5, 8]
         self.assertEqual(max_integer(my_test_list), 10000000000)
 
+    def test_mixed_list(self):
+        """ Pass huge ints"""
+        my_test_list = ['a', 65, 'z']
+        self.assertRaises(TypeError, max_integer, my_test_list)
+        my_test_list = [22, -2, -5, 'A']
+        self.assertRaises(TypeError, max_integer, my_test_list)
+
 if __name__ == '__main__':
     unittest.main()
