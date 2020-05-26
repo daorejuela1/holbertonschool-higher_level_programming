@@ -81,9 +81,9 @@ if __name__ == '__main__':
         print("Usage: nqueens N")
         sys.exit(1)
 
-    n = int(sys.argv[1])
-
-    if (type(n) is not int):
+    try:
+        n = int(sys.argv[1])
+    except ValueError:
         print("N must be a number")
         sys.exit(1)
 
