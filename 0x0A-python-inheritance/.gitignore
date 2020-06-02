@@ -4,5 +4,5 @@
 !*.h
 !*.md
 !.gitignore
-!/test
+!test/
 !*.txt
