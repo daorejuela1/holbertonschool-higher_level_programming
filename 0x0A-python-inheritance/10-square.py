@@ -8,6 +8,8 @@ Rectangle = __import__('9-rectangle').Rectangle
 
 class Square(Rectangle):
 
+    """Square class to represent a rect with width and height equal """
+
     def __init__(self, size):
         """ Instantiate square """
         self.integer_validator("size", size)
