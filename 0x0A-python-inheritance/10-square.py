@@ -12,11 +12,8 @@ class Square(Rectangle):
         """ Instantiate square """
         self.integer_validator("size", size)
         self.__size = size
+        Rectangle.__init__(self, size, size)
 
     def area(self):
         """ Calcs the rect area """
         return (self.__size * self.__size)
-
-    def __str__(self):
-        """ Prints width vs height """
-        return ("[Rectangle] {:d}/{:d}".format(self.__size, self.__size))
