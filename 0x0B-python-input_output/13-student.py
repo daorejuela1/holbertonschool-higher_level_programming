@@ -26,4 +26,4 @@ class Student():
 
     def reload_from_json(self, json):
         """Loads attributes in this instance"""
-        pass
+        self.__dict__ = json
