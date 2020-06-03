@@ -86,3 +86,24 @@ Testing all sort:
     >>> my_list.append([1, 2, 3, 4, 5])
     >>> my_list.print_sorted()
     [[1, 2, 3, 4, 5]]
+
+Negative numbers:
+
+    >>> my_list = MyList()
+    >>> my_list.append(-25)
+    >>> my_list.append(-15)
+    >>> my_list.append(-35)
+    >>> my_list.append(45)
+    >>> my_list.append(-55)
+    >>> my_list.print_sorted()
+    [-55, -35, -25, -15, 45]
+
+Inserted list at init:
+
+    >>> my_list = MyList([1, 2, 3])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+    >>> my_list = MyList([2, 3, 1])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
