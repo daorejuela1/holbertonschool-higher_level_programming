@@ -67,14 +67,20 @@ Testing all sort:
     [15, 25, 35, 45, 55]
 
     >>> my_list = MyList()
-    >>> my_list.append(float('inf'))
+    >>> my_list.append(int('inf'))
+    Traceback (most recent call last):
+    ...
+    ValueError: invalid literal for int() with base 10: 'inf'
     >>> my_list.print_sorted()
-    [inf]
+    []
 
     >>> my_list = MyList()
-    >>> my_list.append(float('nan'))
+    >>> my_list.append(int('nan'))
+    Traceback (most recent call last):
+    ...
+    ValueError: invalid literal for int() with base 10: 'nan'
     >>> my_list.print_sorted()
-    [nan]
+    []
 
     >>> my_list = MyList()
     >>> my_list.append([1, 2, 3, 4, 5])
