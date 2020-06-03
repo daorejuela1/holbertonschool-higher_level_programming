@@ -107,3 +107,17 @@ Inserted list at init:
     >>> my_list = MyList([2, 3, 1])
     >>> my_list.print_sorted()
     [1, 2, 3]
+
+    >>> my_list = MyList()
+    >>> isinstance(my_list, list)
+    True
+
+    >>> my_list = MyList()
+    >>> type(my_list)
+    <class '1-my_list.MyList'>
+
+    >>> my_list = MyList([2, 3, 1])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+    >>> my_list
+    [2, 3, 1]
