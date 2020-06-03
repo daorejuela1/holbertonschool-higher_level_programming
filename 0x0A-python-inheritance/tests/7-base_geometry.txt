@@ -84,3 +84,46 @@ Age special num cases:
     Traceback (most recent call last):
     ...
     TypeError: list must be an integer
+
+    >>> type(bg)
+    <class '7-base_geometry.BaseGeometry'>
+
+    >>> isinstance(bg, BaseGeometry)
+    True
+
+    >>> name = BaseGeometry(1)
+    Traceback (most recent call last):
+    ...
+    TypeError: __init__() takes 1 positional argument but 2 were given
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+    >>> bg.integer_validator("", )
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Sending non int values:
+
+    >>> bg.integer_validator("", True)
+    Traceback (most recent call last):
+    ...
+    TypeError:  must be an integer
+
+    >>> bg.integer_validator("", None)
+    Traceback (most recent call last):
+    ...
+    TypeError:  must be an integer
+
+    >>> bg.integer_validator("", (1, 2))
+    Traceback (most recent call last):
+    ...
+    TypeError:  must be an integer
+
+    >>> bg.integer_validator("", {"key", 3})
+    Traceback (most recent call last):
+    ...
+    TypeError:  must be an integer
