@@ -55,12 +55,32 @@ Age not int:
 
 Age special num cases:
 
-    >>> bg.integer_validator("power", float('nan'))
+    >>> bg.integer_validator("power", int('nan'))
     Traceback (most recent call last):
     ...
-    TypeError: power must be an integer
+    ValueError: invalid literal for int() with base 10: 'nan'
 
-    >>> bg.integer_validator("power", float('inf'))
+    >>> bg.integer_validator("power", int('inf'))
     Traceback (most recent call last):
     ...
-    TypeError: power must be an integer
+    ValueError: invalid literal for int() with base 10: 'inf'
+
+    >>> bg.integer_validator("power", int('inf'))
+    Traceback (most recent call last):
+    ...
+    ValueError: invalid literal for int() with base 10: 'inf'
+
+    >>> bg.integer_validator("", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError:  must be greater than 0
+
+    >>> bg.integer_validator("a", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: a must be greater than 0
+
+    >>> bg.integer_validator("list", [0])
+    Traceback (most recent call last):
+    ...
+    TypeError: list must be an integer
