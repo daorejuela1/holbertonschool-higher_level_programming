@@ -20,5 +20,4 @@ class MyList(list):
         """
         Prints the list in sorted order
         """
-        my_list = self
-        print(sorted(my_list))
+        print(sorted(self))

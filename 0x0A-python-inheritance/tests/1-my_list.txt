@@ -75,3 +75,8 @@ Testing all sort:
     >>> my_list.append(float('nan'))
     >>> my_list.print_sorted()
     [nan]
+
+    >>> my_list = MyList()
+    >>> my_list.append([1, 2, 3, 4, 5])
+    >>> my_list.print_sorted()
+    [[1, 2, 3, 4, 5]]
