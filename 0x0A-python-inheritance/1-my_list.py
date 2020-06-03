@@ -10,12 +10,6 @@ class MyList(list):
     a new component
     """
 
-    def __init__(self):
-        """
-        Init Mylist with list params
-        """
-        list.__init__(self)
-
     def print_sorted(self):
         """
         Prints the list in sorted order
