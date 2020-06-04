@@ -27,11 +27,8 @@ if __name__ == '__main__':
         line_counter = 0
         for line in sys.stdin:
             line_counter += 1
-            try:
-                code = line.split()[7]
-                size += int(line.split()[8])
-            except (IndexError, ValueError):
-                pass
+            code = line.split()[7]
+            size += int(line.split()[8])
             if code in code_dict:
                 code_dict[code] += 1
             if (line_counter % 10 == 0):
