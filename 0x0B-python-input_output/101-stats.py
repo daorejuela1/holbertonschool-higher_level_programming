@@ -26,6 +26,8 @@ if __name__ == '__main__':
     try:
         line_counter = 0
         for line in sys.stdin:
+            if (len(line.split()) != 9):
+                continue
             line_counter += 1
             code = line.split()[7]
             size += int(line.split()[8])
