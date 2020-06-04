@@ -24,15 +24,18 @@ if __name__ == '__main__':
         "500": 0
     }
     try:
-        line_counter = 1
+        line_counter = 0
         for line in sys.stdin:
-            if (line_counter % 10 == 0):
-                print_pretty(size, code_dict)
             line_counter += 1
             code = line.split()[7]
-            size += int(line.split()[8])
+            try:
+                size += int(line.split()[8])
+            except (IndexError, ValueError):
+                pass
             if code in code_dict:
                 code_dict[code] += 1
+            if (line_counter % 10 == 0):
+                print_pretty(size, code_dict)
         print_pretty(size, code_dict)
     except KeyboardInterrupt:
         print_pretty(size, code_dict)
