@@ -33,6 +33,7 @@ if __name__ == '__main__':
                 code_dict[code] += 1
             if (line_counter % 10 == 0):
                 print_pretty(size, code_dict)
+        print_pretty(size, code_dict)
     except KeyboardInterrupt:
         print_pretty(size, code_dict)
         raise
