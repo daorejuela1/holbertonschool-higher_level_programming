@@ -8,7 +8,7 @@ def print_pretty(size, code_dict):
     print("File size: " + str(size[0]))
     for key, value in sorted(code_dict.items()):
         if (value != 0):
-            print("{} : {}".format(key, value))
+            print("{}: {}".format(key, value))
 
 
 def main(size, code_dict):
