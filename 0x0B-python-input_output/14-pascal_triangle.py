@@ -6,10 +6,10 @@ Pascal triangle implementation
 
 def pascal_triangle(n):
     """pascal triangle interview answer"""
-    if (n < 0):
+    if (n <= 0):
         return []
     init = [[1]]
-    for i in range(1, n + 1):
+    for i in range(1, n):
         if (i == 1):
             init.append([1, 1])
         else:
