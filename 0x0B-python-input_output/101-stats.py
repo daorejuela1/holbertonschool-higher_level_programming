@@ -29,6 +29,7 @@ if __name__ == '__main__':
             if (len(line.split()) != 9):
                 line_counter += 1
                 continue
+            line_counter += 1
             code = line.split()[7]
             size += int(line.split()[8])
             if code in code_dict:
