@@ -5,7 +5,7 @@ import sys
 
 def print_pretty(size, code_dict):
     """parse important data"""
-    print("File size: " + str(size))
+    print("File size: {}".format(size))
     for key, value in sorted(code_dict.items()):
         if (value != 0):
             print("{}: {}".format(key, value))
