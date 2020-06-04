@@ -18,6 +18,7 @@ def append_after(filename="", search_string="", new_string=""):
         value = list_values[i].find(search_string)
         if (value != -1):
             list_values.insert(i + 1, new_string)
+            i += 1
         i += 1
         variable_len = len(list_values)
 
