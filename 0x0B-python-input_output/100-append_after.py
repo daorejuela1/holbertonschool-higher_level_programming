@@ -4,6 +4,10 @@
 
 def append_after(filename="", search_string="", new_string=""):
     """This function appends text after finding text in a sequence"""
+    if not search_string:
+        return
+    if not new_string:
+        return
     with open(filename, 'r') as my_file:
         list_values = my_file.readlines()
 
