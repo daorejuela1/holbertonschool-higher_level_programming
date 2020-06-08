@@ -7,6 +7,8 @@ and to avoid duplicating the same code (by extension, same bugs)
 import json
 import os
 import csv
+import turtle
+import random
 
 
 class Base():
@@ -100,7 +102,7 @@ class Base():
         elif (cls.__name__ == "Square"):
             header_list = ["id", "size", "x", "y"]
         with open(filename, "w") as my_file:
-            writer = csv.DictWriter(my_file, fieldnames = header_list)
+            writer = csv.DictWriter(my_file, fieldnames=header_list)
             writer.writeheader()
             for my_dict in list_objs:
                 writer.writerow(my_dict.to_dictionary())
@@ -120,3 +122,48 @@ class Base():
                 row = {key: int(row[key]) for key in row.keys()}
                 instance_list.append(cls.create(**row))
         return(instance_list)
+
+    def draw(list_rectangles, list_squares):
+        """Draws the rectangle and squares.
+
+        Args:
+            list_rectangles (list): List with instances with rectangle
+            list_squares (list): List with instances of squares
+        """
+        dict_list = [x.to_dictionary() for x in list_rectangles]
+        square_list = [y.to_dictionary() for y in list_squares]
+        wn = turtle.Screen()
+        wn.title("Display your figures")
+        wn_size = (1024, 768)
+        wn.setup(width=wn_size[0], height=wn_size[1], startx=0, starty=0)
+        wn.setworldcoordinates(0, 1024, 768, 0)
+        # len (first object)
+        for my_dict in dict_list:
+            rgb = [random.random() for x in range(3)]
+            turtle.shape("square")
+            turtle.hideturtle()
+            turtle.penup()
+            # Set object width and height
+            turtle.shapesize(my_dict["width"]*0.5, my_dict["height"]*0.5, 2)
+            turtle.fillcolor(rgb[0], rgb[1], rgb[2])
+            # Set object pos x, y
+            turtle.goto(my_dict["x"], my_dict["y"])
+            turtle.showturtle()
+            turtle.pendown()
+            turtle.stamp()
+            turtle.speed(1)
+        for my_dict in square_list:
+            rgb = [random.random() for x in range(3)]
+            turtle.shape("square")
+            turtle.hideturtle()
+            turtle.penup()
+            # Set object width and height
+            turtle.shapesize(my_dict["size"]*0.5, my_dict["size"]*0.5, 2)
+            turtle.fillcolor(rgb[0], rgb[1], rgb[2])
+            # Set object pos x, y
+            turtle.goto(my_dict["x"], my_dict["y"])
+            turtle.showturtle()
+            turtle.pendown()
+            turtle.stamp()
+            turtle.speed(1)
+        input()
