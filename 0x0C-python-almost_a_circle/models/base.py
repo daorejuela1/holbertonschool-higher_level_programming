@@ -44,7 +44,10 @@ class Base():
         Args:
             list_objs (int): list with the instances
         """
-        dict_list = [x.to_dictionary() for x in list_objs]
+        if list_objs is not None:
+            dict_list = [x.to_dictionary() for x in list_objs]
+        else:
+            dict_list = []
         filename = cls.__name__ + ".json"
         with open(filename, "w") as my_file:
             my_file.write(cls.to_json_string(dict_list))
