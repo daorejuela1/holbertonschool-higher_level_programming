@@ -71,8 +71,8 @@ class TestBaseClass(unittest.TestCase):
         """
         base = Base(100)
         list_input = []
-        self.assertEqual(base.from_json_string(None), "[]")
-        self.assertEqual(base.from_json_string(list_input), "[]")
+        self.assertEqual(base.from_json_string(None), [])
+        self.assertEqual(base.from_json_string(list_input), [])
 
     def test_json_string_good(self):
         """Test the function with good cases
