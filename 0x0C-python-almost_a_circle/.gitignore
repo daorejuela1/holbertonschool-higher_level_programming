@@ -3,4 +3,5 @@
 !*.md
 !models/
 !tests/
+!tests/test_models/
 !.gitignore
