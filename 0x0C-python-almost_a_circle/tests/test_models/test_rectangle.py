@@ -17,6 +17,21 @@ class TestRectangleClass(unittest.TestCase):
         """Return to 0 class attributes"""
         Base._Base__nb_objects = 0
 
+    def test_invalid_value(self):
+        """Test to validate zero or negative integers"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(-5, 1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r = Rectangle(0, 1)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, -5)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r = Rectangle(1, 0)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r = Rectangle(1, 1, -10)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r = Rectangle(1, 1, 1, -10)
+
     def test_empty(self):
         """Test the base class without params
         """
