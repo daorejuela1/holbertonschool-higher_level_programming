@@ -69,6 +69,11 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(r3.x, 3)
         self.assertEqual(r3.y, 1)
 
+    def test_lot_params(self):
+        """Test with more than 5 params
+        """
+        self.assertRaises(TypeError, Rectangle, 1, 1, 1, 1, 1, 1)
+
     def test_type_errors(self):
         """Test with not int input
         """

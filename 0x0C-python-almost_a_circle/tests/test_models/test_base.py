@@ -35,6 +35,12 @@ class TestBaseClass(unittest.TestCase):
         b3 = Base(2)
         self.assertEqual(b3.id, 2)
 
+    def test_extra_entry(self):
+        """Test with manual entry
+        """
+        self.assertRaises(TypeError, Base, 1, 1, 1, 1, 1, 1)
+
+
     def test_mixed(self):
         """Test mixing
         """

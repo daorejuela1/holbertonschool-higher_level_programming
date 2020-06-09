@@ -52,6 +52,11 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(r2.x, 4)
         self.assertEqual(r2.y, 3)
 
+    def test_lot_params(self):
+        """Test with more than 5 params
+        """
+        self.assertRaises(TypeError, Square, 1, 1, 1, 1, 1, 1)
+
     def test_type_errors(self):
         """Test with not int input
         """
