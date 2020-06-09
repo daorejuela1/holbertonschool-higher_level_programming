@@ -66,6 +66,8 @@ class TestSquareClass(unittest.TestCase):
         self.assertRaises(TypeError, Square, (2,), 2)
         self.assertRaises(TypeError, Square, 2.0, 2.5)
         self.assertRaises(TypeError, Square, 2, 2, [2], 2)
+        self.assertRaises(TypeError, Square, 2, float("inf"), 8, 1)
+        self.assertRaises(TypeError, Square, 2, float("nan"), 8, 1)
 
     def test_value_errors(self):
         """Test with 0 and negative inputs

@@ -85,6 +85,8 @@ class TestRectangleClass(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle, 2, 2, [2], 2)
         self.assertRaises(TypeError, Rectangle, 2, 2, 2, [2])
         self.assertRaises(TypeError, Rectangle, 2, 2, 2, [2], 2)
+        self.assertRaises(TypeError, Rectangle, 2, float("inf"), 8, 1)
+        self.assertRaises(TypeError, Rectangle, 2, float("nan"), 8, 1)
 
     def test_value_errors(self):
         """Test with 0 and negative inputs

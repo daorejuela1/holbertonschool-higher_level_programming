@@ -40,7 +40,6 @@ class TestBaseClass(unittest.TestCase):
         """
         self.assertRaises(TypeError, Base, 1, 1, 1, 1, 1, 1)
 
-
     def test_mixed(self):
         """Test mixing
         """
