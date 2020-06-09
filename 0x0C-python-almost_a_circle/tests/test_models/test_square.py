@@ -5,7 +5,7 @@ from io import StringIO
 from models.square import Square
 from unittest.mock import patch
 from models.base import Base
-
+import json
 
 class TestSquareClass(unittest.TestCase):
     """TestSquareClass resume
@@ -279,6 +279,46 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(my_square.size, 10)
         self.assertEqual(my_square.x, 1)
         self.assertEqual(my_square.y, 1)
+
+    def test_dictionary_json(self):
+        """Test the function that converts a dict to json
+        """
+        base = Square(1)
+        self.assertEqual(base.to_json_string(None), "[]")
+        my_dict = {}
+        self.assertEqual(base.to_json_string(my_dict), "[]")
+        my_dict = {"test": 5}
+        self.assertEqual(base.to_json_string(my_dict), '{"test": 5}')
+        self.assertEqual(type(base.to_json_string(my_dict)), str)
+
+    def test_dictionary_json_good(self):
+        """Test the function with good cases
+        """
+        base = Square(1)
+        my_dict = {"id": 5, "x": 2}
+        self.assertDictEqual(json.loads(base.to_json_string(my_dict)),
+                             json.loads('{"id": 5, "x": 2}'))
+
+    def test_json_string(self):
+        """Test the function with null cases
+        """
+        base = Square(1)
+        list_input = []
+        self.assertEqual(base.from_json_string(None), [])
+        self.assertEqual(base.from_json_string(list_input), [])
+
+    def test_json_string_good(self):
+        """Test the function with good cases
+        """
+        base = Square(1)
+        list_input = [
+            {'id': 89, 'width': 10, 'height': 4},
+            {'id': 7, 'width': 1, 'height': 7}
+        ]
+        my_json = base.to_json_string(list_input)
+        self.assertEqual(base.from_json_string(my_json),
+                         [{'height': 4, 'width': 10, 'id': 89},
+                         {'height': 7, 'width': 1, 'id': 7}])
 
 if __name__ == '__main__':
     unittest.main()
