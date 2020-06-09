@@ -6,6 +6,7 @@ from models.rectangle import Rectangle
 from unittest.mock import patch
 from models.base import Base
 import json
+import pep8
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -17,6 +18,30 @@ class TestRectangleClass(unittest.TestCase):
     def setUp(self):
         """Return to 0 class attributes"""
         Base._Base__nb_objects = 0
+
+    """ checking for documentation """
+    def test_module_doc(self):
+        """ checks for module doc """
+        self.assertTrue(len(Rectangle.__doc__) > 0)
+
+    def test_class_doc(self):
+        """ checks for class doc """
+        self.assertTrue(len(Rectangle.__doc__) > 0)
+
+    def test_method_docs(self):
+        """ checking for method doc """
+        for func in dir(Rectangle):
+            self.assertTrue(len(func.__doc__) > 0)
+
+    def test_pep8(self):
+        """ test rectangle and test_rectangle
+            for pep8 conformance """
+        style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/rectangle.py'
+        file2 = 'tests/test_models/test_rectangle.py'
+        result = style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warning).")
 
     def test_invalid_value(self):
         """Test to validate zero or negative integers"""
@@ -81,6 +106,8 @@ class TestRectangleClass(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle, 2, "2")
         self.assertRaises(TypeError, Rectangle, [2], [2])
         self.assertRaises(TypeError, Rectangle, (2,), 2)
+        self.assertRaises(TypeError, Rectangle, 2, {1, 2}, 5, 9)
+        self.assertRaises(TypeError, Rectangle, 8, 6, 3, (1, 2))
         self.assertRaises(TypeError, Rectangle, 2.0, 2.5)
         self.assertRaises(TypeError, Rectangle, 2, 2, [2], 2)
         self.assertRaises(TypeError, Rectangle, 2, 2, 2, [2])

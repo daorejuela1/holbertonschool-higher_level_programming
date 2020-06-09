@@ -3,6 +3,7 @@
 import unittest
 from models.base import Base
 import json
+import pep8
 
 
 class TestBaseClass(unittest.TestCase):
@@ -14,6 +15,28 @@ class TestBaseClass(unittest.TestCase):
     def setUp(self):
         """Return to 0 class attributes"""
         Base._Base__nb_objects = 0
+
+    def test_module_doc(self):
+        """ check for module documentation """
+        self.assertTrue(len(Base.__doc__) > 0)
+
+    def test_class_doc(self):
+        """ check for documentation """
+        self.assertTrue(len(Base.__doc__) > 0)
+
+    def test_method_docs(self):
+        """ check for method documentation """
+        for func in dir(Base):
+            self.assertTrue(len(func.__doc__) > 0)
+
+    def test_pep8(self):
+        """ test base and test_base for pep8 conformance """
+        style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/base.py'
+        file2 = 'tests/test_models/test_base.py'
+        result = style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warning).")
 
     def test_empty(self):
         """Test the base class without params
@@ -91,8 +114,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(base.from_json_string(my_json),
                          [{'height': 4, 'width': 10, 'id': 89},
                          {'height': 7, 'width': 1, 'id': 7}])
-
-
 
 if __name__ == '__main__':
     unittest.main()
