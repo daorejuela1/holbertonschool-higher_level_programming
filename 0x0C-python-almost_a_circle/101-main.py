@@ -6,9 +6,7 @@ from models.square import Square
 
 if __name__ == "__main__":
 
-    # list_rectangles = [Rectangle(100, 40), Rectangle(90, 110, 30, 10), Rectangle(20, 25, 110, 80)]
-    # list_squares = [Square(35), Square(15, 70, 50), Square(80, 30, 70)]
+    list_rectangles = [Rectangle(100, 10, 200, 200), Rectangle(90, 110, 50, 110), Rectangle(50, 20, 100, 100)]
+    list_squares = [Square(50, 200, 500), Square(90, 300, 50), Square(80, 200, 400)]
 
-    list_rectangles = [Rectangle(1, 1, 500, 500)]
-    list_squares = [Square(1)]
     Base.draw(list_rectangles, list_squares)

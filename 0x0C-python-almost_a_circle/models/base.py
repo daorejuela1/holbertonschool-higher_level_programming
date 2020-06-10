@@ -126,6 +126,49 @@ class Base():
                 instance_list.append(cls.create(**row))
         return(instance_list)
 
+    @staticmethod
+    def draw_rectangle(board, x, y, width, height, fill):
+        """Draws a rectangle with a pencil animation
+
+        Args:
+            board (turtle board): Turtle board to draw on
+            x ([int]): x position
+            y ([int]): y position
+            width ([int]): rec width
+            height ([int]): rec height
+            color ([list]): color to draw the line
+            fill ([str]): fill color
+        """
+        board.fillcolor(fill)
+        font = ("Arial", 8, 'normal', 'bold', 'italic', 'underline')
+        color = [random.random() for x in range(3)]
+        board.speed(1)
+        board.pencolor(color[0], color[1], color[2])
+        board.pensize(3)
+        board.setheading(0)
+        board.begin_fill()
+        board.up()
+        board.goto(x, y)
+        board.down()
+        # draw top
+        board.forward(width)
+        # draw right
+        board.right(90)
+        board.write("   Height = "+str(height)+" px", font=font)
+        board.forward(height)
+        # draw bottom
+        board.right(90)
+        board.forward(width)
+        # draw left
+        board.right(90)
+        board.forward(height)
+        board.end_fill()
+        board.up()
+        board.goto(x, y + 20)
+        board.down()
+        board.write("Width = "+str(width)+" px", font=font)
+
+    @staticmethod
     def draw(list_rectangles, list_squares):
         """Draws the rectangle and squares.
 
@@ -133,40 +176,27 @@ class Base():
             list_rectangles (list): List with instances with rectangle
             list_squares (list): List with instances of squares
         """
+
+        font = ("Arial", 15, 'normal', 'bold')
         dict_list = [x.to_dictionary() for x in list_rectangles]
         square_list = [y.to_dictionary() for y in list_squares]
         wn = turtle.Screen()
         wn.title("Display your figures")
-        wn_size = (1024, 768)
+        board = turtle.Turtle()
+        wn_size = (600, 600)
         wn.setup(width=wn_size[0], height=wn_size[1], startx=0, starty=0)
-        wn.setworldcoordinates(0, 1024, 768, 0)
+        wn.setworldcoordinates(0, wn_size[0], wn_size[1], -50)
         # len (first object)
         for my_dict in dict_list:
-            rgb = [random.random() for x in range(3)]
-            turtle.shape("square")
-            turtle.hideturtle()
-            turtle.penup()
-            # Set object width and height
-            turtle.shapesize(my_dict["width"]*0.5, my_dict["height"]*0.5, 2)
-            turtle.fillcolor(rgb[0], rgb[1], rgb[2])
-            # Set object pos x, y
-            turtle.goto(my_dict["x"], my_dict["y"])
-            turtle.showturtle()
-            turtle.pendown()
-            turtle.stamp()
-            turtle.speed(1)
+            Base.draw_rectangle(board, my_dict["x"], my_dict["y"],
+                                my_dict["width"], my_dict["height"], "red")
         for my_dict in square_list:
-            rgb = [random.random() for x in range(3)]
-            turtle.shape("square")
-            turtle.hideturtle()
-            turtle.penup()
-            # Set object width and height
-            turtle.shapesize(my_dict["size"]*0.5, my_dict["size"]*0.5, 2)
-            turtle.fillcolor(rgb[0], rgb[1], rgb[2])
-            # Set object pos x, y
-            turtle.goto(my_dict["x"], my_dict["y"])
-            turtle.showturtle()
-            turtle.pendown()
-            turtle.stamp()
-            turtle.speed(1)
+            Base.draw_rectangle(board, my_dict["x"], my_dict["y"],
+                                my_dict["size"], my_dict["size"], "blue")
+        board.up()
+        board.goto(wn_size[0] / 2, wn_size[1] / 2)
+        board.write("Sq_lis len = "+str(len(square_list)), font=font)
+        board.goto(wn_size[0] / 2, (wn_size[1] / 2) + 20)
+        board.write("Rec_lis len = " + str(len(dict_list)), font=font)
+        board.down()
         input()
