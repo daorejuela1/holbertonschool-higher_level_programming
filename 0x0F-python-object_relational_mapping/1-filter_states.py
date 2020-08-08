@@ -21,7 +21,7 @@ def main():
     cursor = db.cursor()
     # Use all the SQL you like
     cursor.execute("""SELECT * FROM states WHERE states.name
-                   LIKE 'N%' ORDER BY states.id""")
+                   LIKE 'N%' ORDER BY states.id ASC""")
     data = cursor.fetchall()
 
     for states in data:

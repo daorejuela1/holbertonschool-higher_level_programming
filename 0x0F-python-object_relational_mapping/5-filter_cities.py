@@ -34,6 +34,7 @@ def main():
             print(data[i][0] + ", ", end="")
         else:
             print(data[i][0])
+    cursor.close()
     db.close()
 
 if __name__ == '__main__':

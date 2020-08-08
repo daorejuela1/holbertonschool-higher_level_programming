@@ -27,6 +27,7 @@ def main():
 
     for states in data:
         print(states)
+    cursor.close()
     db.close()
 
 if __name__ == '__main__':
