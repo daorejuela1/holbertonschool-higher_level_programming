@@ -22,7 +22,7 @@ def main():
     cursor = db.cursor()
     # Use all the SQL you like
     sqlquery = ("""SELECT * FROM states WHERE
-                BINARY states.name='" + state_name + "'""")
+                BINARY states.name='{}'""".format(state_name))
     cursor.execute(sqlquery)
     data = cursor.fetchall()
 
