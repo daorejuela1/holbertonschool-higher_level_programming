@@ -21,7 +21,8 @@ def main():
                          user=db_user, passwd=db_password, db=db_name)
     cursor = db.cursor()
     # Use all the SQL you like
-    sqlquery = "SELECT * FROM states WHERE states.name='" + state_name + "'"
+    sqlquery = ("""SELECT * FROM states WHERE
+                BINARY states.name='" + state_name + "'""")
     cursor.execute(sqlquery)
     data = cursor.fetchall()
 
