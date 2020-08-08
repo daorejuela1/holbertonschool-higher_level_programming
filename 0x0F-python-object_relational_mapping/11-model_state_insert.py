@@ -24,7 +24,7 @@ def main():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    new_obj = State(name = "Louisiana")
+    new_obj = State(name="Louisiana")
     session.add(new_obj)
     session.flush()
     print(new_obj.id)
