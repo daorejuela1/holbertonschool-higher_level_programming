@@ -26,7 +26,7 @@ def main():
     session = Session()
     new_obj = State(name="Louisiana")
     session.add(new_obj)
-    session.flush()
+    session.commit()
     print(new_obj.id)
     session.close()
 
