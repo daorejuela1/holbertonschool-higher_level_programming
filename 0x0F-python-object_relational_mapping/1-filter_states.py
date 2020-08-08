@@ -20,8 +20,8 @@ def main():
                          user=db_user, passwd=db_password, db=db_name)
     cursor = db.cursor()
     # Use all the SQL you like
-    cursor.execute("SELECT * FROM states WHERE states.name
-                   LIKE 'N%' ORDER BY states.id")
+    cursor.execute("""SELECT * FROM states WHERE states.name
+                   LIKE 'N%' ORDER BY states.id""")
     data = cursor.fetchall()
 
     for states in data:
