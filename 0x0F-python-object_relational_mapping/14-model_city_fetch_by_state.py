@@ -27,11 +27,7 @@ def main():
     session = Session()
     for state, city in (session.query(State, City).order_by(City.id).
                         filter(City.state_id == State.id)):
-<<<<<<< HEAD
         print("{}: ({}) {}".format(state.name, city.id, city.name))
-=======
-        print("{}: ({}) {}".format(state.name, state.id, city.name))
->>>>>>> 9891df41f5186ca74400c74aff43f364e263cc8a
     session.close()
 
 if __name__ == '__main__':
