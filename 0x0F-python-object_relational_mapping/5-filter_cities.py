@@ -33,7 +33,7 @@ def main():
         if (i != len(data) - 1):
             print(data[i][0] + ", ", end="")
         else:
-            print(data[i][0], end ="")
+            print(data[i][0], end="")
     print()
     cursor.close()
     db.close()
