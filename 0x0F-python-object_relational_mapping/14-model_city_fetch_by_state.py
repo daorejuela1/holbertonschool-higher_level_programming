@@ -6,6 +6,7 @@ This file prints all states from the database
 import sys
 import sqlalchemy
 from model_state import State, Base
+from model_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -24,10 +25,9 @@ def main():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    delete = session.query(State).filter(State.name.like('%a%'))
-    for sacrifice in delete:
-        session.delete(sacrifice)
-    session.commit()
+    for state, city in session.query(State,
+                                     City).filter(City.state_id == State.id):
+        print("{}: ({}) {}".format(state.name, state.id, city.name))
     session.close()
 
 if __name__ == '__main__':
