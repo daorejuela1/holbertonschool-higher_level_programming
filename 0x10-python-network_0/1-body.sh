@@ -4,5 +4,5 @@
 condition=$(curl -sLI "$1" | grep "200 OK" | cut -d " " -f2)
 if [[ $condition == 200 ]]
 then
-	curl -L "$1"
+	curl -sL "$1"
 fi

@@ -1,2 +1,2 @@
 #!/bin/bash
-curl --request DELETE "$1"
+curl -s --request DELETE "$1"
