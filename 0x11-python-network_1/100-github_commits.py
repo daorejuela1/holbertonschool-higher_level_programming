@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     repository = sys.argv[1]
     user = sys.argv[2]
-    url = "https://api.github.com/repos/{}/{}/commits".format(repository, user)
+    url = "https://api.github.com/repos/{}/{}/commits".format(user, repository)
     response = requests.get(url)
     my_data = response.json()
     for i in range(10):
