@@ -9,5 +9,5 @@ if __name__ == "__main__":
     url = sys.argv[1]
     address = sys.argv[2]
     dataset = {'email': address}
-    response = requests.get(url, data=dataset)
+    response = requests.post(url, data=dataset)
     print(response.text)
