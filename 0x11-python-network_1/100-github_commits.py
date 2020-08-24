@@ -13,6 +13,6 @@ if __name__ == "__main__":
     response = requests.get(url)
     my_data = response.json()
     for i in range(10):
-        print("{} {}".format(my_data[i].get('sha'),
-                             my_data[i].get('commit').
-                             get('author').get('name')))
+        print("{}: {}".format(my_data[i].get('sha'),
+                              my_data[i].get('commit').
+                              get('author').get('name')))
