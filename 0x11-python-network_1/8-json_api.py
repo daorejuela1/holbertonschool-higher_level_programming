@@ -16,7 +16,7 @@ if __name__ == "__main__":
     response = requests.post(url, data=dataset)
     try:
         json = response.json()
-        if not json:
+        if not json or len(json) == 0:
             print("No result")
         else:
             print("[{}] {}".format(json.get('id'), value.get('name')))
