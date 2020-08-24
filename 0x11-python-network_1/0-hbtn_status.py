@@ -3,7 +3,6 @@
 This file creates a request on the internet
 """
 from urllib import request
-import sys
 
 
 if __name__ == "__main__":
@@ -14,7 +13,7 @@ if __name__ == "__main__":
         my_data = response.read()
         values.append(type(my_data))
         values.append(my_data)
-        values.append(my_data.decode())
+        values.append(my_data.decode()
         print("Body response:")
         for i in range(3):
             print("\t- {}: {}".format(key_values[i], values[i]))
