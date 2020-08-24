@@ -5,11 +5,13 @@ This file creates a request on the internet
 from urllib import request
 import sys
 
-url = "https://intranet.hbtn.io/status"
-key_values = ['type', 'content', 'utf8 content']
-values = []
-with request.urlopen(url) as response:
-    my_data = response.read()
+
+if __name__ == "__main__":
+    url = "https://intranet.hbtn.io/status"
+    my_data_request = request.urlopen(url)
+    key_values = ['type', 'content', 'utf8 content']
+    values = []
+    my_data = my_data_request.read()
     values.append(type(my_data))
     values.append(my_data)
     values.append(my_data.decode())
