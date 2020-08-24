@@ -22,7 +22,9 @@ if __name__ == "__main__":
             exit()
     except AttributeError:
         pass
-    for i in range(10):
-        print("{}: {}".format(my_data[i].get('sha'),
-                              my_data[i].get('commit').
+    for count, commit in enumerate(my_data):
+        if count == 10:
+            break
+        print("{}: {}".format(commit.get('sha'),
+                              commit.get('commit').
                               get('author').get('name')))
