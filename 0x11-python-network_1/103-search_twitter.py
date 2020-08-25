@@ -35,6 +35,6 @@ if __name__ == "__main__":
     if "errors" in json:
         exit()
     for data in json.get('statuses'):
-        print("[{}] {} by {}".format(data.get('id'),
+        print("[{}] {} by {}".format(data.get('id_str'),
                                      data.get('text'),
                                      data.get('user').get('name')))
