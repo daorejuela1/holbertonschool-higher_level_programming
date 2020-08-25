@@ -4,18 +4,23 @@ This file gets info from an url
 """
 import requests
 import sys
+import base64
 
 if __name__ == "__main__":
 
     CONSUMER_KEY = sys.argv[1]
     CONSUMER_SECRET_API = sys.argv[2]
     search_string = sys.argv[3]
+    random = b"This is not random"
+    encoded_number = base64.b64encode(random)
     auth_data = {'grant_type': 'client_credentials'}
-    header_data = {'Content-Type':
+    key = "{}:{}".format(CONSUMER_KEY, CONSUMER_SECRET_API).encode('ascii')
+    key = base64.b64encode(key).decode('ascii')
+    header_data = {'Authorization': 'Basic {}'.format(key),
+                   'Content-Type':
                    'application/x-www-form-urlencoded;charset=UTF-8'}
     r = requests.post('https://api.twitter.com/oauth2/token',
-                      auth=(CONSUMER_KEY,
-                            CONSUMER_SECRET_API), data=auth_data,
+                      data=auth_data,
                       headers=header_data)
     try:
         access_token = r.json().get('access_token')
