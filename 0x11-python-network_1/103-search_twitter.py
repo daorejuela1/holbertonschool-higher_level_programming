@@ -23,6 +23,9 @@ if __name__ == "__main__":
     authorize = {'Authorization': 'Bearer {}'.format(access_token)}
     response = requests.get(url, headers=authorize, params=parameters)
     json = response.json()
+    if "errors" in json:
+        print("Error")
+        exit()
     for data in json.get('statuses'):
         print("[{}] {} by {}".format(data.get('id'),
                                      data.get('text'),
