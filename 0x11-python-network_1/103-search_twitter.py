@@ -11,8 +11,6 @@ if __name__ == "__main__":
     CONSUMER_KEY = sys.argv[1]
     CONSUMER_SECRET_API = sys.argv[2]
     search_string = sys.argv[3]
-    random = b"This is not random"
-    encoded_number = base64.b64encode(random)
     auth_data = {'grant_type': 'client_credentials'}
     r = requests.post('https://api.twitter.com/oauth2/token',
                       auth=(CONSUMER_KEY,
@@ -21,7 +19,7 @@ if __name__ == "__main__":
         access_token = r.json().get('access_token')
     except:
         exit()
-    parameters = {'q': search_string, 'count': 5, 'result_type': 'recent'}
+    parameters = {'q': search_string}
     url = "https://api.twitter.com/1.1/search/tweets.json"
     authorize = {'Authorization': 'Bearer {}'.format(access_token)}
     response = requests.get(url, headers=authorize, params=parameters)
@@ -31,7 +29,9 @@ if __name__ == "__main__":
         exit()
     if "errors" in json:
         exit()
-    for data in json.get('statuses'):
+    for i, data in enumerate(json.get('statuses')):
+        if i == 5:
+            break
         print("[{}] {} by {}".format(data.get('id'),
                                      data.get('text'),
                                      data.get('user').get('name')))
