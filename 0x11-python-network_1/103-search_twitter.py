@@ -11,8 +11,6 @@ if __name__ == "__main__":
     CONSUMER_KEY = sys.argv[1]
     CONSUMER_SECRET_API = sys.argv[2]
     search_string = sys.argv[3]
-    random = b"This is not random"
-    encoded_number = base64.b64encode(random)
     auth_data = {'grant_type': 'client_credentials'}
     key = "{}:{}".format(CONSUMER_KEY, CONSUMER_SECRET_API).encode('ascii')
     key = base64.b64encode(key).decode('ascii')
