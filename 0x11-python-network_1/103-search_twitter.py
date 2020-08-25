@@ -11,7 +11,8 @@ if __name__ == "__main__":
     CONSUMER_KEY = sys.argv[1]
     CONSUMER_SECRET_API = sys.argv[2]
     search_string = sys.argv[3]
-    # encoded_number = base64.b64encode(random)
+    random = b"This is not random"
+    encoded_number = base64.b64encode(random)
     auth_data = {'grant_type': 'client_credentials'}
     r = requests.post('https://api.twitter.com/oauth2/token',
                       auth=(CONSUMER_KEY,
