@@ -25,4 +25,4 @@ if __name__ == "__main__":
     for data in json.get('statuses'):
         print("[{}] {} by {}".format(data.get('id'),
                                      data.get('text'),
-                                     data.get('name')))
+                                     data.get('user').get('name')))
