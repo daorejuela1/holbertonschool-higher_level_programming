@@ -14,18 +14,21 @@ if __name__ == "__main__":
     random = b"This is not random"
     encoded_number = base64.b64encode(random)
     auth_data = {'grant_type': 'client_credentials'}
-    header_data = {'Content-Type':
-                   'application/x-www-form-urlencoded;charset=UTF-8'}
     r = requests.post('https://api.twitter.com/oauth2/token',
-                      headers=header_data, auth=(CONSUMER_KEY,
-                                                 CONSUMER_SECRET_API),
-                      data=auth_data)
-    access_token = r.json().get('access_token')
-    parameters = {'q': search_string, 'count': 5}
+                      auth=(CONSUMER_KEY,
+                            CONSUMER_SECRET_API), data=auth_data)
+    try:
+        access_token = r.json().get('access_token')
+    except:
+        exit()
+    parameters = {'q': search_string, 'count': 5, 'result_type': 'recent'}
     url = "https://api.twitter.com/1.1/search/tweets.json"
     authorize = {'Authorization': 'Bearer {}'.format(access_token)}
     response = requests.get(url, headers=authorize, params=parameters)
-    json = response.json()
+    try:
+        json = response.json()
+    except:
+        exit()
     if "errors" in json:
         exit()
     for data in json.get('statuses'):
