@@ -8,7 +8,7 @@ for (const ActualVal in ListValues) {
   for (const key in dict) {
     if (dict[key] === ListValues[ActualVal]) {
       arr.push(key);
-     }
+    }
   }
   output[ListValues[ActualVal]] = arr;
 }
