@@ -1,4 +1,4 @@
 #!/usr/bin/node
 exports.esrever = function (list) {
-  return list.reverse();
+  return list.map((element, i) => list[list.length - i - 1]);
 };
