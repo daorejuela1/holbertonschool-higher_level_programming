@@ -1,8 +1,8 @@
 #!/usr/bin/node
 const request = require('request');
-const CONSUMER_KEY = 'b0OAJF6wTxThvyTEFIxFyykws';
-const CONSUMER_SECRET = 'XR3nrUQTnXec0Tfhs5Wj1ovs1IVBrsm1nUTrnDt4B20WVNrpDq';
-const SEARCH_STRING = '#cisfun';
+const CONSUMER_KEY = process.argv[2];
+const CONSUMER_SECRET = process.argv[3];
+const SEARCH_STRING = process.argv[4];
 const oauth =
     {
       consumer_key: CONSUMER_KEY,
@@ -11,11 +11,11 @@ const oauth =
 const query = { q: SEARCH_STRING };
 const AuthData = { grant_type: 'client_credentials' };
 let url = 'https://api.twitter.com/oauth/request_token';
-let i;
+let i = 0;
 request.post({ url: url, auth: oauth, data: AuthData }, function (e, r, body) {
   url = 'https://api.twitter.com/1.1/search/tweets.json';
   request.get({ url: url, oauth: oauth, qs: query, json: true }, function (e, r, user) {
-    for (i in user.statuses) {
+    for (i = 0; i < user.statuses.length; i++) {
       if (i === 5) { break; }
       const TweetID = user.statuses[i].id_str;
       const TweetText = user.statuses[i].text;
