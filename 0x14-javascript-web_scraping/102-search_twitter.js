@@ -8,17 +8,19 @@ const oauth =
       consumer_key: CONSUMER_KEY,
       consumer_secret: CONSUMER_SECRET
     };
-const query = { q: SEARCH_STRING };
+const query = {
+  q: SEARCH_STRING,
+  count: 5
+};
 const AuthData = { grant_type: 'client_credentials' };
 let url = 'https://api.twitter.com/oauth/request_token';
-let i = 0;
 request.post({ url: url, auth: oauth, data: AuthData }, function (e, r, body) {
   url = 'https://api.twitter.com/1.1/search/tweets.json';
-  request.get({ url: url, oauth: oauth, qs: query, json: true }, function (e, r, user) {
-    for (i = 0; i < user.statuses.length; i++) {
-      const TweetID = user.statuses[i].id_str;
-      const TweetText = user.statuses[i].text;
-      const TweetOwner = user.statuses[i].user.name;
+  request.get({ url: url, oauth: oauth, qs: query, json: true }, function (e, r, users) {
+    for (const user of users.statuses) {
+      const TweetID = user.id_str;
+      const TweetText = user.text;
+      const TweetOwner = user.user.name;
       console.log(`[${TweetID}] ${TweetText} by ${TweetOwner}`);
     }
   });
