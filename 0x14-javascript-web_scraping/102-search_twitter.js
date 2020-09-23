@@ -16,7 +16,6 @@ request.post({ url: url, auth: oauth, data: AuthData }, function (e, r, body) {
   url = 'https://api.twitter.com/1.1/search/tweets.json';
   request.get({ url: url, oauth: oauth, qs: query, json: true }, function (e, r, user) {
     for (i = 0; i < user.statuses.length; i++) {
-      if (i === 5) { break; }
       const TweetID = user.statuses[i].id_str;
       const TweetText = user.statuses[i].text;
       const TweetOwner = user.statuses[i].user.name;
