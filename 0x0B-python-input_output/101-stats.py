@@ -23,14 +23,14 @@ if __name__ == '__main__':
         "405": 0,
         "500": 0
     }
+    line_counter = 0
     try:
-        line_counter = 0
         for line in sys.stdin:
-            if (len(line.split()) != 9):
-                continue
             line_counter += 1
-            code = line.split()[7]
-            size += int(line.split()[8])
+            if (len(line.split()) < 2):
+                continue
+            code = line.split()[-2]
+            size += int(line.split()[-1])
             if code in code_dict:
                 code_dict[code] += 1
             if (line_counter % 10 == 0):
